@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ESTACIONAMIENTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="APARCAMIENTO">
+          <Key>
+            <PropertyRef Name="ID_APARCAMIENTO" />
+          </Key>
+          <Property Name="ID_APARCAMIENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FECHA_ENTRADA" Type="date" Nullable="false" />
+          <Property Name="HORA_ENTRADA" Type="time" Precision="7" Nullable="false" />
+          <Property Name="FECHA_SALIDA" Type="date" />
+          <Property Name="HORA_SALIDA" Type="time" Precision="7" />
+          <Property Name="PATENTE_VEHICULO" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOMBRE_USUARIO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CONTRASENIA" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VEHICULO">
+          <Key>
+            <PropertyRef Name="PATENTE" />
+          </Key>
+          <Property Name="PATENTE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="MODELO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MARCA" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_APAR">
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="1" />
+          <End Role="APARCAMIENTO" Type="Self.APARCAMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULO">
+              <PropertyRef Name="PATENTE" />
+            </Principal>
+            <Dependent Role="APARCAMIENTO">
+              <PropertyRef Name="PATENTE_VEHICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ESTACIONAMIENTOModelStoreContainer">
+          <EntitySet Name="APARCAMIENTO" EntityType="Self.APARCAMIENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_APAR" Association="Self.FK_APAR">
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+            <End Role="APARCAMIENTO" EntitySet="APARCAMIENTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ESTACIONAMIENTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="APARCAMIENTO">
+          <Key>
+            <PropertyRef Name="ID_APARCAMIENTO" />
+          </Key>
+          <Property Name="ID_APARCAMIENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FECHA_ENTRADA" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HORA_ENTRADA" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="FECHA_SALIDA" Type="DateTime" Precision="0" />
+          <Property Name="HORA_SALIDA" Type="Time" Precision="7" />
+          <Property Name="PATENTE_VEHICULO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK_APAR" FromRole="APARCAMIENTO" ToRole="VEHICULO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASENIA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VEHICULO">
+          <Key>
+            <PropertyRef Name="PATENTE" />
+          </Key>
+          <Property Name="PATENTE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MODELO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MARCA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="APARCAMIENTO" Relationship="Self.FK_APAR" FromRole="VEHICULO" ToRole="APARCAMIENTO" />
+        </EntityType>
+        <Association Name="FK_APAR">
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="1" />
+          <End Role="APARCAMIENTO" Type="Self.APARCAMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULO">
+              <PropertyRef Name="PATENTE" />
+            </Principal>
+            <Dependent Role="APARCAMIENTO">
+              <PropertyRef Name="PATENTE_VEHICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ESTACIONAMIENTOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="APARCAMIENTO" EntityType="Self.APARCAMIENTO" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" />
+          <AssociationSet Name="FK_APAR" Association="Self.FK_APAR">
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+            <End Role="APARCAMIENTO" EntitySet="APARCAMIENTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ESTACIONAMIENTOModelStoreContainer" CdmEntityContainer="ESTACIONAMIENTOEntities">
+          <EntitySetMapping Name="APARCAMIENTO">
+            <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.APARCAMIENTO">
+              <MappingFragment StoreEntitySet="APARCAMIENTO">
+                <ScalarProperty Name="ID_APARCAMIENTO" ColumnName="ID_APARCAMIENTO" />
+                <ScalarProperty Name="FECHA_ENTRADA" ColumnName="FECHA_ENTRADA" />
+                <ScalarProperty Name="HORA_ENTRADA" ColumnName="HORA_ENTRADA" />
+                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+                <ScalarProperty Name="HORA_SALIDA" ColumnName="HORA_SALIDA" />
+                <ScalarProperty Name="PATENTE_VEHICULO" ColumnName="PATENTE_VEHICULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+                <ScalarProperty Name="CONTRASENIA" ColumnName="CONTRASENIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICULO">
+            <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.VEHICULO">
+              <MappingFragment StoreEntitySet="VEHICULO">
+                <ScalarProperty Name="PATENTE" ColumnName="PATENTE" />
+                <ScalarProperty Name="MODELO" ColumnName="MODELO" />
+                <ScalarProperty Name="MARCA" ColumnName="MARCA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
