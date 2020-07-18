@@ -128,13 +128,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AparcamientoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\APARCAMIENTO.cs">
       <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entidades\Aparcamiento.cs" />
+    <Compile Include="Models\Entidades\Usuario.cs" />
+    <Compile Include="Models\Entidades\Vehiculo.cs" />
     <Compile Include="Models\ModelDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,6 +155,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\TablaUsuario.cs" />
     <Compile Include="Models\USUARIO.cs">
       <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
@@ -159,12 +165,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\ModelDataBase.Context.tt">
@@ -177,8 +178,6 @@
       <DependentUpon>ModelDataBase.edmx</DependentUpon>
       <LastGenOutput>ModelDataBase.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\ModelDataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelDataBase.Designer.cs</LastGenOutput>
@@ -211,19 +210,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Aparcamiento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />

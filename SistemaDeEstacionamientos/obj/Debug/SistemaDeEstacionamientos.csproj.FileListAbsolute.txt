@@ -87,3 +87,4 @@ C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaD
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.csproj.CopyComplete
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.dll
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.pdb
+C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.csprojAssemblyReference.cache
