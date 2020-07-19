@@ -11,23 +11,31 @@ namespace SistemaDeEstacionamientos.Models.Entidades
         private string Modelo;
         private string Marca;
 
+
+        public Vehiculo(string patente, string marca, string modelo )
+        {
+            this.Patente = patente;
+            this.Marca = marca;
+            this.Modelo = modelo;
+        }
+
         public string patente
         {
-            get { return this.Patente; }
+            get { return this.Patente.Trim().ToUpper(); }
 
             set { this.Patente = value; }
         }
 
         public string modelo
         {
-            get { return this.Modelo; }
+            get { return this.Modelo.Trim().ToUpper(); }
 
             set { this.Modelo = value; }
         }
 
         public string marca
         {
-            get { return this.Marca; }
+            get { return this.Marca.Trim().ToUpper(); }
 
             set { this.Marca = value; }
         }

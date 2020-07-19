@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="fd2ca3cc7d1b4dd5b57177b0756d497c" Name="Diagram1">
         <EntityTypeShape EntityType="ESTACIONAMIENTOModel.APARCAMIENTO" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ESTACIONAMIENTOModel.USUARIO" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESTACIONAMIENTOModel.USUARIO" Width="2.375" PointX="0.75" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ESTACIONAMIENTOModel.VEHICULO" Width="1.5" PointX="4" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="ESTACIONAMIENTOModel.FK_APAR" ManuallyRouted="false" >
         </AssociationConnector>

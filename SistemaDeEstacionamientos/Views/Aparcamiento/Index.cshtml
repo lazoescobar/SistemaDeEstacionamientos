@@ -2,27 +2,30 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">Navbar w/ text</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/Home/Index">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Home/About">Acerca de Nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Home/Contact">Contatanos</a>
-                </li>
-            </ul>
-            <span class="navbar-text">
-                Navbar text with an inline element
-            </span>
+
+        <div class="row justify-content-around">
+
+            <div class="col-3">
+
+                <button type="button" class="btn btn-primary" onclick="location.href='/Vehiculo/Registrar'">Registrar Vehiculo</button>
+
+            </div>
+
+            <div class="col-3">
+
+                <button type="button" class="btn btn-primary"> PROBANDO 1 </button>
+            </div>
+
+            <div class="col-3">
+
+                <button type="button" class="btn btn-primary"> PROBANDO 2</button>
+            </div>
+
         </div>
-</nav>
+
+    </div>
+
+</div>

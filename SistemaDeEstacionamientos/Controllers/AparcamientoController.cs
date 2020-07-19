@@ -15,5 +15,12 @@ namespace SistemaDeEstacionamientos.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public ActionResult Registrar() 
+        {
+
+            return View();
+        }
     }
 }
