@@ -21,8 +21,8 @@ namespace SistemaDeEstacionamientos.Models
         }
     
         public string PATENTE { get; set; }
-        public string MODELO { get; set; }
         public string MARCA { get; set; }
+        public string MODELO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<APARCAMIENTO> APARCAMIENTO { get; set; }

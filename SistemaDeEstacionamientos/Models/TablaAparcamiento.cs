@@ -6,20 +6,21 @@ using System.Web;
 
 namespace SistemaDeEstacionamientos.Models
 {
-    public class TablaVehiculo
+    public class TablaAparcamiento
     {
-    
+
         ESTACIONAMIENTOEntities DB = new ESTACIONAMIENTOEntities();
 
-        public Boolean leerPorPatente(Vehiculo vehiculo)
+        public Boolean estaEstacionado(Vehiculo vehiculo)
         {
             Boolean resultado;
 
             try
             {
-                var vehicu = (from veh in DB.VEHICULO
-                              where veh.PATENTE == vehiculo.patente
-                              select veh).FirstOrDefault();
+                var vehicu = (from apa in DB.APARCAMIENTO
+                              where apa.PATENTE_VEHICULO == vehiculo.patente
+                              && apa.FECHA_SALIDA == null && apa.HORA_SALIDA == null
+                              select apa).FirstOrDefault();
 
                 if (vehicu != null)
                 {
@@ -36,21 +37,23 @@ namespace SistemaDeEstacionamientos.Models
             }
 
             return resultado;
+
         }
 
-        public Boolean registrar(Vehiculo vehiculo)
+
+        public Boolean ingreso(Aparcamiento aparcamiento)
         {
             Boolean resultado;
 
-            var vehiculoDB = new VEHICULO();
+            var aparcamientoDB = new APARCAMIENTO();
 
-            vehiculoDB.PATENTE = vehiculo.patente;
-            vehiculoDB.MARCA = vehiculo.marca;
-            vehiculoDB.MODELO = vehiculo.modelo;
+            aparcamientoDB.FECHA_ENTRADA = aparcamiento.fechaEntrada;
+            aparcamientoDB.HORA_ENTRADA = aparcamiento.horaEntrada;
+            aparcamientoDB.PATENTE_VEHICULO = aparcamiento.vehiculo.patente;
 
             try
             {
-                DB.VEHICULO.Add(vehiculoDB);
+                DB.APARCAMIENTO.Add(aparcamientoDB);
                 DB.SaveChanges();
 
                 resultado = true;
@@ -61,8 +64,9 @@ namespace SistemaDeEstacionamientos.Models
             }
 
             return resultado;
+
         }
 
-    
+
     }
 }

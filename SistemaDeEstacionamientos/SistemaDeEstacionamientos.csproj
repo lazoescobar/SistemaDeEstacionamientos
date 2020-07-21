@@ -156,6 +156,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\TablaAparcamiento.cs" />
     <Compile Include="Models\TablaUsuario.cs" />
     <Compile Include="Models\TablaVehiculo.cs" />
     <Compile Include="Models\USUARIO.cs">
@@ -170,6 +171,14 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <EntityDeploy Include="Models\ModelDataBase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelDataBase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelDataBase.edmx.diagram">
+      <DependentUpon>ModelDataBase.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Models\ModelDataBase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelDataBase.edmx</DependentUpon>
@@ -180,14 +189,6 @@
       <DependentUpon>ModelDataBase.edmx</DependentUpon>
       <LastGenOutput>ModelDataBase.cs</LastGenOutput>
     </Content>
-    <EntityDeploy Include="Models\ModelDataBase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelDataBase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModelDataBase.edmx.diagram">
-      <DependentUpon>ModelDataBase.edmx</DependentUpon>
-    </Content>
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -214,7 +215,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Aparcamiento\Index.cshtml" />
-    <Content Include="Views\Aparcamiento\Registrar.cshtml" />
     <Content Include="Views\Vehiculo\Registrar.cshtml" />
   </ItemGroup>
   <ItemGroup>

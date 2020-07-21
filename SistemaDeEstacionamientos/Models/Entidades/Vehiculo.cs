@@ -11,6 +11,10 @@ namespace SistemaDeEstacionamientos.Models.Entidades
         private string Modelo;
         private string Marca;
 
+        public Vehiculo(string patente) 
+        {
+            this.Patente = patente;
+        }
 
         public Vehiculo(string patente, string marca, string modelo )
         {

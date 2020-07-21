@@ -39,7 +39,11 @@ namespace SistemaDeEstacionamientos.Controllers
                 if(tablVehic.registrar(vehicul) == true)
                 {
                     ViewBag.Mensaje = "registrado con exito";
-                }              
+                }
+                else
+                {
+                    ViewBag.Mensaje = "Error en el registro";
+                }
             }
             else
             {

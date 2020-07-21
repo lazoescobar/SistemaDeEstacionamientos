@@ -25,8 +25,8 @@
       <PropertyRef Name="PATENTE" />
     </Key>
     <Property Name="PATENTE" Type="varchar" MaxLength="8" Nullable="false" />
-    <Property Name="MODELO" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="MARCA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MODELO" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_APAR">
     <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="1" />

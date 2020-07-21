@@ -26,8 +26,8 @@
       <PropertyRef Name="PATENTE" />
     </Key>
     <Property Name="PATENTE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="MODELO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MARCA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MODELO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="APARCAMIENTO" Relationship="Self.FK_APAR" FromRole="VEHICULO" ToRole="APARCAMIENTO" />
   </EntityType>
   <Association Name="FK_APAR">

@@ -8,6 +8,7 @@ namespace SistemaDeEstacionamientos.Models
 {
     public class TablaUsuario
     {
+        
         ESTACIONAMIENTOEntities DB = new ESTACIONAMIENTOEntities();
 
         public Boolean logear(Usuario usuario)
@@ -37,5 +38,7 @@ namespace SistemaDeEstacionamientos.Models
 
             return resultado;
         }
+        
     }
+    
 }

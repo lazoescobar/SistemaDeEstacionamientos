@@ -27,8 +27,8 @@
       <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.VEHICULO">
         <MappingFragment StoreEntitySet="VEHICULO">
           <ScalarProperty Name="PATENTE" ColumnName="PATENTE" />
-          <ScalarProperty Name="MODELO" ColumnName="MODELO" />
           <ScalarProperty Name="MARCA" ColumnName="MARCA" />
+          <ScalarProperty Name="MODELO" ColumnName="MODELO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

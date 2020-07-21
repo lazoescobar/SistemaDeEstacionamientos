@@ -30,8 +30,8 @@
             <PropertyRef Name="PATENTE" />
           </Key>
           <Property Name="PATENTE" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="MODELO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="MARCA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MODELO" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_APAR">
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="1" />
@@ -85,8 +85,8 @@
             <PropertyRef Name="PATENTE" />
           </Key>
           <Property Name="PATENTE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MODELO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MARCA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MODELO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="APARCAMIENTO" Relationship="Self.FK_APAR" FromRole="VEHICULO" ToRole="APARCAMIENTO" />
         </EntityType>
         <Association Name="FK_APAR">
@@ -142,8 +142,8 @@
             <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.VEHICULO">
               <MappingFragment StoreEntitySet="VEHICULO">
                 <ScalarProperty Name="PATENTE" ColumnName="PATENTE" />
-                <ScalarProperty Name="MODELO" ColumnName="MODELO" />
                 <ScalarProperty Name="MARCA" ColumnName="MARCA" />
+                <ScalarProperty Name="MODELO" ColumnName="MODELO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
