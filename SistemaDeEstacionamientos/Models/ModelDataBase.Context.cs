@@ -25,7 +25,9 @@ namespace SistemaDeEstacionamientos.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<APARCAMIENTO> APARCAMIENTO { get; set; }
+        public virtual DbSet<BOLETA> BOLETA { get; set; }
+        public virtual DbSet<INGRESO> INGRESO { get; set; }
+        public virtual DbSet<SALIDA> SALIDA { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<VEHICULO> VEHICULO { get; set; }
     }

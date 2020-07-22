@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+    <h1 class="badge badge-secondary">Vehiculos estacionados    TOTAL @ViewBag.totalEstacionados</h1>
+<div class="container">
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-3">
+                <button type="button" class="btn btn-primary" onclick="location.href='/Vehiculo/Registrar'">Registrar Vehiculo</button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-warning"  onclick="location.href='/Salida/Index'"> Area 'Control de salidas' </button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary"> PROBANDO 2</button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="page-header">
+        
+        <h1 class="text-center text-success"> <strong>  Registrar Nuevo Ingreso </strong></h1>
+    </div>
+    <br />
+    @if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Mensaje
+            <button type="button" class="close" data-dismiss="alert" , aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (ViewBag.Alerta != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Alerta
+            <button type="button" class="close" data-dismiss="alert" , aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <div class="form-row">
+        <div class="col">
+            <p> Fecha Entrada</p>
+        </div>
+        <div class="col">
+            <p> Hora Entrada</p>
+        </div>
+        <div class="col">
+            <p> Patente Vehiculo</p>
+        </div>
+    </div>
+    <form action="/Ingreso/Ingreso" method="post">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" name="fechaEntrada" class="form-control" value="@ViewBag.fechaActual" readonly onmousedown="return false;">
+            </div>
+            <div class="col">
+                <input type="text" name="horaEntrada" class="form-control" value="@ViewBag.horaActual" required>
+            </div>
+            <div class="col">
+                <input type="text" name="patente" class="form-control" value="@ViewBag.patente" required placeholder="patente">
+            </div>
+        </div>
+        <br />
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-success">Registrar Entrada</button>
+        </div>
+    </form>
+    <br />
+    @if (ViewBag.Alerta != null)
+    {
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-dark" onclick="location.href='/Vehiculo/Registrar'">Ir a Registrar Vehiculo</button>
+        </div>
+    }
+</div>

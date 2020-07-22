@@ -128,19 +128,26 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AparcamientoController.cs" />
+    <Compile Include="Controllers\BoletaController.cs" />
+    <Compile Include="Controllers\IngresoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SalidaController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\APARCAMIENTO.cs">
+    <Compile Include="Models\BOLETA.cs">
       <DependentUpon>ModelDataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entidades\Aparcamiento.cs" />
+    <Compile Include="Models\Entidades\Boleta.cs" />
+    <Compile Include="Models\Entidades\Ingreso.cs" />
+    <Compile Include="Models\Entidades\Salida.cs" />
     <Compile Include="Models\Entidades\Usuario.cs" />
     <Compile Include="Models\Entidades\Vehiculo.cs" />
+    <Compile Include="Models\INGRESO.cs">
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModelDataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,7 +163,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDataBase.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\TablaAparcamiento.cs" />
+    <Compile Include="Models\SALIDA.cs">
+      <DependentUpon>ModelDataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TablaIngreso.cs" />
+    <Compile Include="Models\TablaSalida.cs" />
     <Compile Include="Models\TablaUsuario.cs" />
     <Compile Include="Models\TablaVehiculo.cs" />
     <Compile Include="Models\USUARIO.cs">
@@ -214,8 +225,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Aparcamiento\Index.cshtml" />
+    <Content Include="Views\Ingreso\Index.cshtml" />
     <Content Include="Views\Vehiculo\Registrar.cshtml" />
+    <Content Include="Views\Salida\Index.cshtml" />
+    <Content Include="Views\Boleta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

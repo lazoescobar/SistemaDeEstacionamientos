@@ -5,30 +5,40 @@ using System.Web;
 
 namespace SistemaDeEstacionamientos.Models.Entidades
 {
-    public class Aparcamiento
+    public class Ingreso
     {
-
-        private int Id_Aparcamiento;
+        private int IdIngreso;
         private DateTime FechaEntrada;
         private TimeSpan HoraEntrada;
-        private DateTime FechaSalida;
-        private DateTime HoraSalida;
+        private string Estado;
         private Vehiculo vehicu;
 
-        public Aparcamiento() { }
+        public Ingreso() { }
 
-        public Aparcamiento(DateTime fechaEntrada, TimeSpan horaEntrada)
+        public Ingreso(int idIngreso)
+        {
+            this.IdIngreso = idIngreso;
+        }
+
+        public Ingreso(DateTime fechaEntrada, TimeSpan horaEntrada, Vehiculo vehiculo)
         {
             this.FechaEntrada = fechaEntrada;
             this.HoraEntrada = horaEntrada;
+            this.vehicu = vehiculo;
         }
 
+        public int idIngreso
+        {
+            get { return this.IdIngreso; }
+
+            set { this.IdIngreso = value; }
+        }
 
         public DateTime fechaEntrada
         {
             get { return this.FechaEntrada; }
 
-            set { this.FechaEntrada = value; }        
+            set { this.FechaEntrada = value; }
         }
 
         public TimeSpan horaEntrada
@@ -38,18 +48,11 @@ namespace SistemaDeEstacionamientos.Models.Entidades
             set { this.HoraEntrada = value; }
         }
 
-        public DateTime fechaSalida
+        public string estado
         {
-            get { return this.FechaSalida; }
+            get { return this.Estado.Trim().ToUpper(); }
 
-            set { this.FechaSalida = value; }
-        }
-
-        public DateTime horaSalida
-        {
-            get { return this.HoraSalida; }
-
-            set { this.HoraSalida = value; }
+            set { this.Estado = value; }
         }
 
         public Vehiculo vehiculo

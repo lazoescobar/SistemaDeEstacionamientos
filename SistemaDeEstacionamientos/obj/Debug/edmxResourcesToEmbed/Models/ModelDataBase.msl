@@ -1,15 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ESTACIONAMIENTOModelStoreContainer" CdmEntityContainer="ESTACIONAMIENTOEntities">
-    <EntitySetMapping Name="APARCAMIENTO">
-      <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.APARCAMIENTO">
-        <MappingFragment StoreEntitySet="APARCAMIENTO">
-          <ScalarProperty Name="ID_APARCAMIENTO" ColumnName="ID_APARCAMIENTO" />
+    <EntitySetMapping Name="BOLETA">
+      <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.BOLETA">
+        <MappingFragment StoreEntitySet="BOLETA">
+          <ScalarProperty Name="ID_BOLETA" ColumnName="ID_BOLETA" />
+          <ScalarProperty Name="ID_SALIDA" ColumnName="ID_SALIDA" />
+          <ScalarProperty Name="TOTAL_A_PAGAR" ColumnName="TOTAL_A_PAGAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INGRESO">
+      <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.INGRESO">
+        <MappingFragment StoreEntitySet="INGRESO">
+          <ScalarProperty Name="ID_INGRESO" ColumnName="ID_INGRESO" />
           <ScalarProperty Name="FECHA_ENTRADA" ColumnName="FECHA_ENTRADA" />
           <ScalarProperty Name="HORA_ENTRADA" ColumnName="HORA_ENTRADA" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="PATENTE_VEHICULO" ColumnName="PATENTE_VEHICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALIDA">
+      <EntityTypeMapping TypeName="ESTACIONAMIENTOModel.SALIDA">
+        <MappingFragment StoreEntitySet="SALIDA">
+          <ScalarProperty Name="ID_SALIDA" ColumnName="ID_SALIDA" />
           <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
           <ScalarProperty Name="HORA_SALIDA" ColumnName="HORA_SALIDA" />
-          <ScalarProperty Name="PATENTE_VEHICULO" ColumnName="PATENTE_VEHICULO" />
+          <ScalarProperty Name="ID_INGRESO" ColumnName="ID_INGRESO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

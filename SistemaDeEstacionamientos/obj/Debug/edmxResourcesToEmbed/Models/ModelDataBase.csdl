@@ -1,16 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ESTACIONAMIENTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="APARCAMIENTO">
+  <EntityType Name="BOLETA">
     <Key>
-      <PropertyRef Name="ID_APARCAMIENTO" />
+      <PropertyRef Name="ID_BOLETA" />
     </Key>
-    <Property Name="ID_APARCAMIENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_BOLETA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_SALIDA" Type="Int32" Nullable="false" />
+    <Property Name="TOTAL_A_PAGAR" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SALIDA" Relationship="Self.BOLETA_FK" FromRole="BOLETA" ToRole="SALIDA" />
+  </EntityType>
+  <EntityType Name="INGRESO">
+    <Key>
+      <PropertyRef Name="ID_INGRESO" />
+    </Key>
+    <Property Name="ID_INGRESO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FECHA_ENTRADA" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="HORA_ENTRADA" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="FECHA_SALIDA" Type="DateTime" Precision="0" />
-    <Property Name="HORA_SALIDA" Type="Time" Precision="7" />
+    <Property Name="ESTADO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PATENTE_VEHICULO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="VEHICULO" Relationship="Self.FK_APAR" FromRole="APARCAMIENTO" ToRole="VEHICULO" />
+    <NavigationProperty Name="VEHICULO" Relationship="Self.FK_INGRESO" FromRole="INGRESO" ToRole="VEHICULO" />
+    <NavigationProperty Name="SALIDA" Relationship="Self.SALIDA_FK" FromRole="INGRESO" ToRole="SALIDA" />
+  </EntityType>
+  <EntityType Name="SALIDA">
+    <Key>
+      <PropertyRef Name="ID_SALIDA" />
+    </Key>
+    <Property Name="ID_SALIDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FECHA_SALIDA" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="HORA_SALIDA" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="ID_INGRESO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BOLETA" Relationship="Self.BOLETA_FK" FromRole="SALIDA" ToRole="BOLETA" />
+    <NavigationProperty Name="INGRESO" Relationship="Self.SALIDA_FK" FromRole="SALIDA" ToRole="INGRESO" />
   </EntityType>
   <EntityType Name="USUARIO">
     <Key>
@@ -28,27 +48,61 @@
     <Property Name="PATENTE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MARCA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MODELO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="APARCAMIENTO" Relationship="Self.FK_APAR" FromRole="VEHICULO" ToRole="APARCAMIENTO" />
+    <NavigationProperty Name="INGRESO" Relationship="Self.FK_INGRESO" FromRole="VEHICULO" ToRole="INGRESO" />
   </EntityType>
-  <Association Name="FK_APAR">
+  <Association Name="BOLETA_FK">
+    <End Role="SALIDA" Type="Self.SALIDA" Multiplicity="1" />
+    <End Role="BOLETA" Type="Self.BOLETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SALIDA">
+        <PropertyRef Name="ID_SALIDA" />
+      </Principal>
+      <Dependent Role="BOLETA">
+        <PropertyRef Name="ID_SALIDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INGRESO">
     <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="1" />
-    <End Role="APARCAMIENTO" Type="Self.APARCAMIENTO" Multiplicity="*" />
+    <End Role="INGRESO" Type="Self.INGRESO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="VEHICULO">
         <PropertyRef Name="PATENTE" />
       </Principal>
-      <Dependent Role="APARCAMIENTO">
+      <Dependent Role="INGRESO">
         <PropertyRef Name="PATENTE_VEHICULO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="SALIDA_FK">
+    <End Role="INGRESO" Type="Self.INGRESO" Multiplicity="1" />
+    <End Role="SALIDA" Type="Self.SALIDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INGRESO">
+        <PropertyRef Name="ID_INGRESO" />
+      </Principal>
+      <Dependent Role="SALIDA">
+        <PropertyRef Name="ID_INGRESO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ESTACIONAMIENTOEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="APARCAMIENTO" EntityType="Self.APARCAMIENTO" />
+    <EntitySet Name="BOLETA" EntityType="Self.BOLETA" />
+    <EntitySet Name="INGRESO" EntityType="Self.INGRESO" />
+    <EntitySet Name="SALIDA" EntityType="Self.SALIDA" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
     <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" />
-    <AssociationSet Name="FK_APAR" Association="Self.FK_APAR">
+    <AssociationSet Name="BOLETA_FK" Association="Self.BOLETA_FK">
+      <End Role="SALIDA" EntitySet="SALIDA" />
+      <End Role="BOLETA" EntitySet="BOLETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INGRESO" Association="Self.FK_INGRESO">
       <End Role="VEHICULO" EntitySet="VEHICULO" />
-      <End Role="APARCAMIENTO" EntitySet="APARCAMIENTO" />
+      <End Role="INGRESO" EntitySet="INGRESO" />
+    </AssociationSet>
+    <AssociationSet Name="SALIDA_FK" Association="Self.SALIDA_FK">
+      <End Role="INGRESO" EntitySet="INGRESO" />
+      <End Role="SALIDA" EntitySet="SALIDA" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

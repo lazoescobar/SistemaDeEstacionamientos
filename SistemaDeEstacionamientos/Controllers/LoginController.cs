@@ -38,7 +38,7 @@ namespace SistemaDeEstacionamientos.Controllers
                 FormsAuthentication.SetAuthCookie(usuar.nombreUsuario, true);
 
                 //return RedirectToAction("Contact", "Home");
-                return RedirectToAction("Index", "Aparcamiento");
+                return RedirectToAction("Index", "Ingreso");
             }
             else
             {

@@ -7,43 +7,56 @@
 <br />
 
 <div class="container">
-    <div class="page-header">
-        <h1 class="text-center text-success"> <strong>  Registrar Nuevo Vehiculo </strong></h1>
+        <div class="row">
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-dark" onclick="location.href='/Ingreso/Index'"> Volver Atras </button>
+            </div>
+            <div class="col-8">
+                <h1 class="text-center text-success"> <strong>  Registrar Nuevo Vehiculo </strong></h1>
+            </div>
+            <div class="col-2">
+                <label></label>
+            </div>
+        </div>
+        @if (ViewBag.Mensaje != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Mensaje
+                <button type="button" class="close" data-dismiss="alert" , aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <form action="/Vehiculo/Registrar" method="post">
+                    @if (ViewBag.patente != null)
+                    {
+                        <div class="form-group">
+                            <p> Patente </p>
+                            <input type="text" class="form-control" name="patente" placeholder="Ejemplo : TH9980" required value="@ViewBag.patente">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            <p> Patente </p>
+                            <input type="text" class="form-control" name="patente" placeholder="Ejemplo : TH9980" required value="@ViewBag.Patente">
+                        </div>
+                    }
+                    <div class="form-group">
+                        <p> Modelo </p>
+                        <input type="text" class="form-control" name="marca" required value="@ViewBag.Marca">
+                    </div>
+                    <div class="form-group">
+                        <p> Marca </p>
+                        <input type="text" class="form-control" name="modelo" required value="@ViewBag.Modelo">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-    @if (ViewBag.Mensaje != null)
-    {
-        <div class="alert alert-danger" role="alert">
-            @ViewBag.Mensaje
-        </div>
-    }
-
-    @if (ViewBag.Alerta != null)
-    {
-        <div class="alert alert-danger" role="alert">
-            @ViewBag.Alerta
-        </div>
-    }
-    <div class="row justify-content-center">
-        <div class="col-md-3">
-            <form action="/Vehiculo/Registrar" method="post">
-                <div class="form-group">
-                    <p> Patente </p>
-                    <input type="text" class="form-control" name="patente" placeholder="Ejemplo : TH9980" required value="@ViewBag.Patente">
-                </div>
-                <div class="form-group">
-                    <p> Modelo </p>
-                    <input type="text" class="form-control" name="marca" required value="@ViewBag.Marca">
-                </div>
-                <div class="form-group">
-                    <p> Marca </p>
-                    <input type="text" class="form-control" name="modelo" required value="@ViewBag.Modelo">
-                </div>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-success">Registrar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 

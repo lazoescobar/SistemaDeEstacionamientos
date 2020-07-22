@@ -1,15 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ESTACIONAMIENTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="APARCAMIENTO">
+  <EntityType Name="BOLETA">
     <Key>
-      <PropertyRef Name="ID_APARCAMIENTO" />
+      <PropertyRef Name="ID_BOLETA" />
     </Key>
-    <Property Name="ID_APARCAMIENTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_BOLETA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_SALIDA" Type="int" Nullable="false" />
+    <Property Name="TOTAL_A_PAGAR" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INGRESO">
+    <Key>
+      <PropertyRef Name="ID_INGRESO" />
+    </Key>
+    <Property Name="ID_INGRESO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FECHA_ENTRADA" Type="date" Nullable="false" />
     <Property Name="HORA_ENTRADA" Type="time" Precision="7" Nullable="false" />
-    <Property Name="FECHA_SALIDA" Type="date" />
-    <Property Name="HORA_SALIDA" Type="time" Precision="7" />
+    <Property Name="ESTADO" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="PATENTE_VEHICULO" Type="varchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SALIDA">
+    <Key>
+      <PropertyRef Name="ID_SALIDA" />
+    </Key>
+    <Property Name="ID_SALIDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHA_SALIDA" Type="date" Nullable="false" />
+    <Property Name="HORA_SALIDA" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ID_INGRESO" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="USUARIO">
     <Key>
@@ -28,25 +44,59 @@
     <Property Name="MARCA" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="MODELO" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_APAR">
+  <Association Name="BOLETA_FK">
+    <End Role="SALIDA" Type="Self.SALIDA" Multiplicity="1" />
+    <End Role="BOLETA" Type="Self.BOLETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SALIDA">
+        <PropertyRef Name="ID_SALIDA" />
+      </Principal>
+      <Dependent Role="BOLETA">
+        <PropertyRef Name="ID_SALIDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INGRESO">
     <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="1" />
-    <End Role="APARCAMIENTO" Type="Self.APARCAMIENTO" Multiplicity="*" />
+    <End Role="INGRESO" Type="Self.INGRESO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="VEHICULO">
         <PropertyRef Name="PATENTE" />
       </Principal>
-      <Dependent Role="APARCAMIENTO">
+      <Dependent Role="INGRESO">
         <PropertyRef Name="PATENTE_VEHICULO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="SALIDA_FK">
+    <End Role="INGRESO" Type="Self.INGRESO" Multiplicity="1" />
+    <End Role="SALIDA" Type="Self.SALIDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INGRESO">
+        <PropertyRef Name="ID_INGRESO" />
+      </Principal>
+      <Dependent Role="SALIDA">
+        <PropertyRef Name="ID_INGRESO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ESTACIONAMIENTOModelStoreContainer">
-    <EntitySet Name="APARCAMIENTO" EntityType="Self.APARCAMIENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BOLETA" EntityType="Self.BOLETA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INGRESO" EntityType="Self.INGRESO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SALIDA" EntityType="Self.SALIDA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_APAR" Association="Self.FK_APAR">
+    <AssociationSet Name="BOLETA_FK" Association="Self.BOLETA_FK">
+      <End Role="SALIDA" EntitySet="SALIDA" />
+      <End Role="BOLETA" EntitySet="BOLETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INGRESO" Association="Self.FK_INGRESO">
       <End Role="VEHICULO" EntitySet="VEHICULO" />
-      <End Role="APARCAMIENTO" EntitySet="APARCAMIENTO" />
+      <End Role="INGRESO" EntitySet="INGRESO" />
+    </AssociationSet>
+    <AssociationSet Name="SALIDA_FK" Association="Self.SALIDA_FK">
+      <End Role="INGRESO" EntitySet="INGRESO" />
+      <End Role="SALIDA" EntitySet="SALIDA" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

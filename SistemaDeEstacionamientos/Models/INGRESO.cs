@@ -12,15 +12,22 @@ namespace SistemaDeEstacionamientos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class APARCAMIENTO
+    public partial class INGRESO
     {
-        public int ID_APARCAMIENTO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public INGRESO()
+        {
+            this.SALIDA = new HashSet<SALIDA>();
+        }
+    
+        public int ID_INGRESO { get; set; }
         public System.DateTime FECHA_ENTRADA { get; set; }
         public System.TimeSpan HORA_ENTRADA { get; set; }
-        public Nullable<System.DateTime> FECHA_SALIDA { get; set; }
-        public Nullable<System.TimeSpan> HORA_SALIDA { get; set; }
+        public string ESTADO { get; set; }
         public string PATENTE_VEHICULO { get; set; }
     
         public virtual VEHICULO VEHICULO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SALIDA> SALIDA { get; set; }
     }
 }

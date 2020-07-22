@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-dark" onclick="location.href='/Ingreso/Index'"> Volver a Ingresos </button>
+            </div>
+            <div class="col-8">
+                <h1 class="text-center text-warning"> <strong>  Gestion de Salidas </strong></h1>
+            </div>
+            <div class="col-2">
+                <label></label>
+            </div>
+        </div>
+        <br />
+        <div class="col-auto my-1">
+            <h1 class="bg-success text-center">Buscar Ingreso por Patente de vehiculo</h1>
+        </div>
+        <br />
+        <form action="/Salida/IngresoPorPatente" method="post">
+            <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                    <h3>Patente   : </h3>
+                </div>
+                <div class="col-3">
+                    <input type="text" name="patente" class="form-control" required placeholder="Ejemplo : TH9980">
+                </div>
+                <div class="col-auto my-1">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </div>
+        </form>
+        @if (ViewBag.Mensaje != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Mensaje
+                <button type="button" class="close" data-dismiss="alert" , aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @if (ViewBag.encontrado != null)
+        {
+            <br />
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">ID INGRESO</th>
+                        <th scope="col">FECGA ENTRADA</th>
+                        <th scope="col">HORA ENTRADA</th>
+                        <th scope="col">ESTADO</th>
+                        <th scope="col">PATENTE VEHICULO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@ViewBag.idIngreso</td>
+                        <td>@ViewBag.fechaEntrada</td>
+                        <td>@ViewBag.horaEntrada</td>
+                        <td>@ViewBag.estado</td>
+                        <td>@ViewBag.patenteVehiculo</td>
+                        <td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-row">
+                <div class="col-4">
+                    <p> Fecha Salida</p>
+                </div>
+                <div class="col-8 text-left">
+                    <p> Hora Salida</p>
+                </div> 
+            </div>
+            <form action="/Salida/Salida" method="post">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" name="fechaSalida" class="form-control" value="@ViewBag.fechaActual" readonly onmousedown="return false;">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="horaSalida" class="form-control" value="@ViewBag.horaActual" required>
+                    </div>
+                    <div class="col">
+                        <input name="idIngresoo" type="hidden" class="form-control" value="@ViewBag.idIngreso">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success">Registrar Salida</button>
+                    </div>
+                </div>
+            </form>
+            <br />
+        }
+    </div>
+
+
+

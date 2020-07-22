@@ -21,8 +21,12 @@ namespace SistemaDeEstacionamientos.Controllers
         }
 
         [Authorize]
-        public ActionResult Registrar()
+        public ActionResult Registrar(string patente)
         {
+            if (patente != null)
+            {
+                ViewBag.patente = patente;
+            }
             return View();
         }
 

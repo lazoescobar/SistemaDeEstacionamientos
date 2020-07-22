@@ -1,5 +1,3 @@
-C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.csprojAssemblyReference.cache
-C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.csproj.CoreCompileInputs.cache
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\bin\SistemaDeEstacionamientos.dll.config
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\bin\SistemaDeEstacionamientos.dll
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\bin\SistemaDeEstacionamientos.pdb
@@ -85,6 +83,8 @@ C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\bin\es\System.Web.
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\bin\es\System.Web.WebPages.resources.dll
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.csprojAssemblyReference.cache
+C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.csproj.CoreCompileInputs.cache
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.csproj.CopyComplete
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.dll
 C:\Users\lazo\source\repos\Proyecto\SistemaDeEstacionamientos\obj\Debug\SistemaDeEstacionamientos.pdb
