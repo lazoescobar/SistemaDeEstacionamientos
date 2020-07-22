@@ -1,6 +1,7 @@
 ﻿using SistemaDeEstacionamientos.Models.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -107,10 +108,65 @@ namespace SistemaDeEstacionamientos.Models
         }
 
         /*
-        public Boolean actualizarEstado(Ingreso ingreso)
+        public Boolean verificarEstado(Ingreso ingreso)
         {
+            Boolean Resultado;
 
+            try
+            {
+                var estado = (from ingr in DB.INGRESO
+                              where ingr.ID_INGRESO == ingreso.idIngreso &&
+                              ingr.ESTADO == "ESTACIONADO"
+                              select ingr).FirstOrDefault();
+
+                if(estado != null)
+                {
+                    Resultado = true;
+                }
+                else
+                {
+                    Resultado = false;
+                }
+            }
+            catch (Exception)
+            {
+                Resultado = false;
+            }
+
+            return Resultado;
         }
         */
+
+        public Boolean actualizarEstado(Ingreso ingreso)
+        {
+            Boolean resultado;
+
+            try
+            {
+                var ingresoDB = (from ingr in DB.INGRESO
+                                 where ingr.ID_INGRESO == ingreso.idIngreso
+                                 select ingr).FirstOrDefault();
+
+                if(ingresoDB != null)
+                {
+                    ingresoDB.ESTADO = ingreso.estado;
+                    DB.Entry(ingresoDB).State = EntityState.Modified;
+                    DB.SaveChanges();
+
+                    resultado = true;
+                }
+                else
+                {
+                    resultado = false;
+                }
+            }
+            catch (Exception)
+            {
+                resultado = false;
+            }
+
+            return resultado;
+        }
+        
     }
 }

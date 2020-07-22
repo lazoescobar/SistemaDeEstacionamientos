@@ -16,7 +16,7 @@ namespace SistemaDeEstacionamientos.Controllers
 
         private TablaVehiculo tablVehic = new TablaVehiculo();
         private TablaIngreso tablIngre = new TablaIngreso();
-        private TablaSalida tablSali;
+        private TablaSalida tablSali = new TablaSalida();
 
         // GET: Salida
         [Authorize]
@@ -73,13 +73,22 @@ namespace SistemaDeEstacionamientos.Controllers
         public ActionResult Salida(DateTime fechaSalida, TimeSpan horaSalida, string idIngresoo)
         {
             this.ingres = new Ingreso(Convert.ToInt32(idIngresoo));
+            this.ingres.estado = "RETIRADO";
+
             this.salid = new Salida(fechaSalida, horaSalida, ingres);
-
-            this.tablSali = new TablaSalida();
-
+           
             if(tablSali.salida(salid) == true) // se registra la salida en la BD
-            {
-                return RedirectToAction("Index", "Boleta", new { mensaje = "correcto" });
+            {             
+                if(tablIngre.actualizarEstado(ingres) == true)
+                {
+                    return RedirectToAction("Index", "Boleta", new { mensaje = "correcto" });
+
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+              
             }
             else
             {
