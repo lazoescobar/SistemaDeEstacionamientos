@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="221ef161aea044a490b6b48b73bd4b5d" Name="Diagram1">
+      <Diagram DiagramId="6b4f0194a18f4a1f824de58c9e8d1b83" Name="Diagram1">
         <EntityTypeShape EntityType="ESTACIONAMIENTOModel.BOLETA" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ESTACIONAMIENTOModel.INGRESO" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ESTACIONAMIENTOModel.SALIDA" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ESTACIONAMIENTOModel.USUARIO" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ESTACIONAMIENTOModel.VEHICULO" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <AssociationConnector Association="ESTACIONAMIENTOModel.BOLETA_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ESTACIONAMIENTOModel.BOLETA_FORE" ManuallyRouted="false" />
         <AssociationConnector Association="ESTACIONAMIENTOModel.FK_INGRESO" ManuallyRouted="false" />
         <AssociationConnector Association="ESTACIONAMIENTOModel.SALIDA_FK" ManuallyRouted="false" />
       </Diagram>

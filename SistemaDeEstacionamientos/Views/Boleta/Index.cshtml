@@ -5,9 +5,55 @@
 
 <h2>Index</h2>
 
-@if(ViewBag.Mensaje != null)
+<table class="table">
+    <caption>Informacion sobre el ingreso al estacionamieno</caption>
+    <thead>
+        <tr>
+            <th scope="col">Patente</th>
+            <th scope="col">Fecha Entrada</th>
+            <th scope="col">Hora Entrada</th>
+            <th scope="col">Fecha Salida</th>
+            <th scope="col">Hora Salida</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@ViewBag.patente</th>
+            <td>@ViewBag.fechaEntrada</td>
+            <td>@ViewBag.horaEntrada</td>
+            <td>@ViewBag.fechaSalida</td>
+            <td>@ViewBag.horaSalida</td>
+        </tr>
+    </tbody>
+</table>
+<div class="col-12">
+    <h1 class="text-center text-success"> <strong>  @ViewBag.Mensaje </strong></h1>
+</div>
+@if (ViewBag.Mensaje != null)
 {
-    <p>
-        @ViewBag.Mensaje
-    </p>
+    <div class="row justify-content-center">
+        <button type="submit" class="btn btn-warning" onclick="location.href='/Salida/Index'">Regresar a 'Control de salidas'</button>
+    </div>
 }
+else
+{
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form action="/Boleta/Cobrar" method="post">
+            <div class="form-group">
+                <input type="hidden" class="form-control" value="@ViewBag.idSalida" name="idSalida">
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Calcular Cobro</button>
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" value="@ViewBag.horaEntrada" name="horaEntrada">
+            </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" value="@ViewBag.horaSalida" name="horaSalida">
+            </div>
+        </form>
+    </div>
+</div>
+}
+

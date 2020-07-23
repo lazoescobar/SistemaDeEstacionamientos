@@ -6,7 +6,7 @@
     </Key>
     <Property Name="ID_BOLETA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_SALIDA" Type="int" Nullable="false" />
-    <Property Name="TOTAL_A_PAGAR" Type="int" Nullable="false" />
+    <Property Name="TOTAL_A_PAGAR" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="INGRESO">
     <Key>
@@ -44,7 +44,7 @@
     <Property Name="MARCA" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="MODELO" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="BOLETA_FK">
+  <Association Name="BOLETA_FORE">
     <End Role="SALIDA" Type="Self.SALIDA" Multiplicity="1" />
     <End Role="BOLETA" Type="Self.BOLETA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -86,7 +86,7 @@
     <EntitySet Name="SALIDA" EntityType="Self.SALIDA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="BOLETA_FK" Association="Self.BOLETA_FK">
+    <AssociationSet Name="BOLETA_FORE" Association="Self.BOLETA_FORE">
       <End Role="SALIDA" EntitySet="SALIDA" />
       <End Role="BOLETA" EntitySet="BOLETA" />
     </AssociationSet>

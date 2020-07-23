@@ -38,7 +38,7 @@ namespace SistemaDeEstacionamientos.Controllers
 
             this.tablVehic = new TablaVehiculo();
 
-            if(tablVehic.leerPorPatente(vehicul) == false)
+            if(tablVehic.leerPorPatente(vehicul) == false) //no se encuentra registrado
             {
                 if(tablVehic.registrar(vehicul) == true)
                 {

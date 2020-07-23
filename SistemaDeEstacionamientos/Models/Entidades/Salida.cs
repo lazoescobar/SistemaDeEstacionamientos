@@ -15,6 +15,11 @@ namespace SistemaDeEstacionamientos.Models.Entidades
 
         public Salida() { }
 
+        public Salida(int idsalida) 
+        {
+            this.idSalida = idsalida;
+        }
+
         public Salida(DateTime fechaSalida, TimeSpan horaSalida, Ingreso ingreso)
         {
             this.FechaSalida = fechaSalida;
@@ -22,6 +27,12 @@ namespace SistemaDeEstacionamientos.Models.Entidades
             this.ingres = ingreso;
         }
 
+        public int idsalida
+        {
+            get { return this.idSalida; }
+
+            set { this.idSalida = value; }
+        }
         public DateTime fechaSalida
         {
             get { return this.FechaSalida; }

@@ -81,7 +81,7 @@ namespace SistemaDeEstacionamientos.Controllers
             {             
                 if(tablIngre.actualizarEstado(ingres) == true)
                 {
-                    return RedirectToAction("Index", "Boleta", new { mensaje = "correcto" });
+                    return RedirectToAction("Index", "Boleta", new { idIngreso = ingres.idIngreso  });
 
                 }
                 else

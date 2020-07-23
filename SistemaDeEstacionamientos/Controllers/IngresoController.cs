@@ -41,7 +41,7 @@ namespace SistemaDeEstacionamientos.Controllers
             {
                 if (tablIngre.estaEstacionado(vehic) == false) // el auto no esta estacionado
                 {
-                    if (tablIngre.ingreso(ingres) == true)
+                    if (tablIngre.ingreso(ingres) == true) //lo registra en la BD
                     {
 
                         ViewBag.totalEstacionados = tablIngre.cantidadEstacionados();

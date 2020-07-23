@@ -107,36 +107,6 @@ namespace SistemaDeEstacionamientos.Models
             return total;
         }
 
-        /*
-        public Boolean verificarEstado(Ingreso ingreso)
-        {
-            Boolean Resultado;
-
-            try
-            {
-                var estado = (from ingr in DB.INGRESO
-                              where ingr.ID_INGRESO == ingreso.idIngreso &&
-                              ingr.ESTADO == "ESTACIONADO"
-                              select ingr).FirstOrDefault();
-
-                if(estado != null)
-                {
-                    Resultado = true;
-                }
-                else
-                {
-                    Resultado = false;
-                }
-            }
-            catch (Exception)
-            {
-                Resultado = false;
-            }
-
-            return Resultado;
-        }
-        */
-
         public Boolean actualizarEstado(Ingreso ingreso)
         {
             Boolean resultado;

@@ -16,7 +16,7 @@ namespace SistemaDeEstacionamientos.Models
     {
         public int ID_BOLETA { get; set; }
         public int ID_SALIDA { get; set; }
-        public int TOTAL_A_PAGAR { get; set; }
+        public string TOTAL_A_PAGAR { get; set; }
     
         public virtual SALIDA SALIDA { get; set; }
     }
